@@ -22,7 +22,7 @@
 
 
 (defmacro code-critic
-  [{:keys [good bad]}]
+  [{:keys [good bad]}] ;Map destructuring
   `(do (println "Great squid of Madrid, this is bad code:" (quote ~bad))
        (println "Sweet gorilla of Manilla, this is good code:" (quote ~good))))
 
@@ -58,5 +58,5 @@
                ["This is bad code:" bad]])))
 
 (code-critic3 {:good (+ 1 1) :bad (1 + 1)})
-(clojure.pprint/pprint (macroexpand-1 '(code-critic3 {:good (+ 1 1) :bad (1 + 1)} )))
+(clojure.pprint/pprint (macroexpand-1 '(code-critic3 {:good (+ 1 1) :bad (1 + 1)})))
 
