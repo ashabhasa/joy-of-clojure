@@ -18,7 +18,7 @@
             (throw (IllegalArgumentException. "do-until requires an even number of forms")))
           (cons 'do-until (nnext clauses)))))
 
-(macroexpand-1 '(do-until true (prn 1) false (prn 2)))
+(macroexpand '(do-until true (prn 1) false (prn 2)))
 
 
 (defmacro code-critic
