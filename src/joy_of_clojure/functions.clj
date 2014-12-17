@@ -27,7 +27,7 @@
 ;(tail-fibo 10000)
 
 
-;recur
+;recur with tco
 
 (defn recur-fibo [n]
   (letfn [(fib [current next n]
@@ -38,3 +38,26 @@
 
 (recur-fibo 9)
 
+
+;fibonacci lazy seq
+
+(defn lazy-seq-fibo
+  ([]
+   (concat [0 1] (lazy-seq-fibo 0N 1N)))
+  ([a b]
+   (let [n (+ a b)]
+     (lazy-seq
+       (cons n (lazy-seq-fibo b n))))))
+
+(take 10 (lazy-seq-fibo))
+(rem (nth (lazy-seq-fibo) 100000) 1000)
+
+
+; fibonacci sequence with existing seq api's
+
+(defn fibo []
+  (map first (iterate (fn [[a b]] [b (+ a b)]) [0N 1N])))
+
+(take 10 (fibo))
+
+(nth (fibo) 100000)
