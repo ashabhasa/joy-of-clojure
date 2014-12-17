@@ -56,7 +56,7 @@
 ; fibonacci sequence with existing seq api's
 
 (defn fibo []
-  (map first (iterate (fn [[a b]] [b (+ a b)]) [0N 1N])))
+  (map first (iterate (fn [[a b]] [b (+' a b)]) [0 1])))
 
 (take 10 (fibo))
 
