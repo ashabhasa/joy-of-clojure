@@ -61,3 +61,12 @@
 (take 10 (fibo))
 
 (nth (fibo) 100000)
+
+(defn my-reverse [x]
+  (letfn [(my-reverse-iter [x xs]
+            (if (empty? x)
+              xs
+              (recur (rest x) (cons (first x) xs))))]
+            (my-reverse-iter x [])))
+
+(my-reverse [1 2 3])
