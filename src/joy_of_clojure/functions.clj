@@ -69,3 +69,28 @@
               (recur (rest x) (cons (first x) xs))))]
             (my-reverse-iter x [])))
 
+
+
+;(defn count-down [n]
+;  (letfn [(iter-count-down [result n]
+;   (if (zero? n)
+;     result
+;     (recur (conj result n) (dec n))))]
+;    (iter-count-down [] n)))
+
+
+(defn count-down
+  ([n] (count-down [] n))
+  ([result n]
+    (if (zero? n)
+      result
+      (recur (conj result n) (dec n)))))
+
+
+;(defn count-down
+;  ([n] (count-down [] n))
+;  ([result n]
+;    (if (zero? n)
+;      result
+;      (lazy-seq (conj (count-down result (dec n)) n)))))
+

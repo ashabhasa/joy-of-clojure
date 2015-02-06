@@ -11,3 +11,14 @@
     (is (= [9 8 7 6 5 4 3 2 1 0] (my-reverse (range 10)))))
   (testing "Nested lists"
     (is (= [[4 5] 3 [1 2]] (my-reverse [[1 2] 3 [4 5]])))))
+
+
+(deftest count-down-test
+  (testing "from 0"
+    (is (= [] (count-down 0))))
+  (testing "from 1"
+    (is (= [1] (count-down 1))))
+  (testing "from 5"
+    (is (= [5 4 3 2 1] (count-down 5))))
+  (testing "first of 1000000"
+    (is (= 10000000 (first (count-down 10000000))))))
