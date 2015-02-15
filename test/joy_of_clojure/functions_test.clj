@@ -42,4 +42,6 @@
   (testing "find position in a collection with two elements"
     (is (= 1 (find-pos 1 [2 1]))))
   (testing "find postion in an arbitrarily large collection"
-    (is (= 50 (find-pos 50 (range 101))))))
+    (is (= 50 (find-pos 50 (range 101)))))
+  (testing "finding the position of non existing element"
+    (is (= nil (find-pos 100 (range 10))))))
