@@ -100,3 +100,9 @@
       acc
       (recur (rest c) (conj acc (f (first c)))))))
 
+(defn find-pos [e coll]
+  (loop [s coll idx 0]
+    (when (seq s)
+      (if (= e (first s))
+        idx
+        (recur (rest s) (inc idx))))))

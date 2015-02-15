@@ -33,3 +33,13 @@
     (is (= [-1 -2] (strict-map - [1 2]))))
   (testing "collection with many elements"
     (is (= [0 -1 -2 -3 -4 -5 -6 -7 -8] (strict-map - (range 9))))))
+
+(deftest find-pos-tests
+  (testing "finding position in an empty collection"
+    (is (nil? (find-pos 1 []))))
+  (testing "finding position in a one element collection"
+    (is (= 0 (find-pos 1 [1]))))
+  (testing "find position in a collection with two elements"
+    (is (= 1 (find-pos 1 [2 1]))))
+  (testing "find postion in an arbitrarily large collection"
+    (is (= 50 (find-pos 50 (range 101))))))
