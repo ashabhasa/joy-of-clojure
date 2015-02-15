@@ -21,4 +21,15 @@
   (testing "from 5"
     (is (= [5 4 3 2 1] (count-down 5))))
   (testing "first of 1000000"
-    (is (= 10000000 (first (count-down 10000000))))))
+    (is (= 1000000 (first (count-down 1000000))))))
+
+
+(deftest strict-map-tests
+  (testing "empty collection"
+    (is (= [] (strict-map - []))))
+  (testing "collection with one element"
+    (is (= [-1] (strict-map - [1]))))
+  (testing "collections with two elements"
+    (is (= [-1 -2] (strict-map - [1 2]))))
+  (testing "collection with many elements"
+    (is (= [0 -1 -2 -3 -4 -5 -6 -7 -8] (strict-map - (range 9))))))

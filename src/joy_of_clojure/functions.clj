@@ -94,3 +94,9 @@
 ;      result
 ;      (lazy-seq (conj (count-down result (dec n)) n)))))
 
+(defn strict-map [f coll]
+  (loop [c coll acc []]
+    (if (empty? c)
+      acc
+      (recur (rest c) (conj acc (f (first c)))))))
+
