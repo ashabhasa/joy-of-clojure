@@ -36,16 +36,21 @@
 
 (deftest find-pos-tests
   (testing "finding position in an empty collection"
-    (is (nil? (find-pos 1 []))))
+    (is (empty?(find-pos #(= % 1) []))))
   (testing "finding position in a one element collection"
-    (is (= 0 (find-pos 1 [1]))))
+    (is (= [0] (find-pos #(= % 1) [1]))))
   (testing "find position in a collection with two elements"
-    (is (= 1 (find-pos 1 [2 1]))))
+    (is (= [1] (find-pos #(= % 1) [2 1]))))
   (testing "find postion in an arbitrarily large collection"
-    (is (= 50 (find-pos 50 (range 101)))))
+    (is (= [50] (find-pos #(= % 50) (range 101)))))
   (testing "finding the position of non existing element"
-    (is (= nil (find-pos 100 (range 10))))))
+    (is (= [] (find-pos #(= % 100) (range 10))))))
 
 (deftest find-pos-for-maps-test
   (testing "find position in a map"
-    (is (= :c (find-pos 1 {:a 2 :b 4 :c 1})))))
+    (is (= [:c] (find-pos #(= % 1) {:a 2 :b 4 :c 1})))))
+
+
+(deftest index-tests
+  (testing "index vector"
+    (is (= [[0 :a] [1 2] [2 :v]] (index [:a 2 :v])))))
